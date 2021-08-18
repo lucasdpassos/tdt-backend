@@ -25,13 +25,28 @@ module.exports = {
         res.json(getUser)
 
      },
-    new: async (req, res) => {
+    newProduct: async (req, res) => {
 
             process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;       
-            const { user } = req.body
-            const newUser = await pool.query("INSERT INTO users (email) VALUES($1)", [user])
+            const product = req.body            
+            const queryData = Object.values(product)
+            console.log(queryData)
+            const newProduct = await pool.query("INSERT INTO products(product_id, product_nome, product_desc, product_marca, product_forn, product_class, product_custo, product_venda, product_estoque, product_loja) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)", queryData)
 
-            res.json(newUser)
+            res.json(newProduct)
+      
+            
+        
+    },
+    newClient: async (req, res) => {
+
+            process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;       
+            const product = req.body            
+            const queryData = Object.values(product)
+            console.log(queryData)
+            const newProduct = await pool.query("INSERT INTO products(product_id, product_nome, product_desc, product_marca, product_forn, product_class, product_custo, product_venda, product_estoque, product_loja) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)", queryData)
+
+            res.json(newProduct)
       
             
         
