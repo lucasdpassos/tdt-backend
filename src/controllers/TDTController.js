@@ -17,6 +17,15 @@ module.exports = {
       
        
     },
+    allCustomers: async (req, res) => {
+        process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;      
+        const getProducts = await pool.query("SELECT * FROM customers")
+
+        res.json(getProducts)
+
+      
+       
+    },
     one: async (req, res) => {
 
         process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;      
@@ -47,6 +56,19 @@ module.exports = {
             const newCustomer = await pool.query("INSERT INTO customers(id, customer_nome, customer_end, customer_buys, customer_tel) VALUES($1, $2, $3, $4, $5)", queryData)
 
             res.json(newCustomer)
+      
+            
+        
+    },
+    newSell: async (req, res) => {
+
+            process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;       
+            const sell = req.body            
+            const queryData = Object.values(sell)
+            console.log(queryData)
+            const newSell = await pool.query("INSERT INTO sells(id, nro_venda, sell_cliente, sell_data, sell_itens, sell_valor, sell_vendedor) VALUES($1, $2, $3, $4, $5, $6, $7)", queryData)
+
+            res.json(newSell)
       
             
         
