@@ -2,8 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const pool = require('./db')
-const routes = require('./routes')
+const pool = require('./src/db')
+const routes = require('./src/routes')
 
 
 const server = express()
