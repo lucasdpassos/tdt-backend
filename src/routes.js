@@ -5,7 +5,7 @@ const TDTController = require('./controllers/TDTController')
   
 
 router.get('/ping', TDTController.ping)
-router.get('/tickets', TDTController.all)
+router.get('/all', TDTController.all)
 router.get('/users', TDTController.one)
 router.post('/ticket', TDTController.new)
 router.put('/ticket/:id', TDTController.edit)

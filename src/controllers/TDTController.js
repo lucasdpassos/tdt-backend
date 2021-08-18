@@ -9,7 +9,11 @@ module.exports = {
         res.send("pong")
     },
     all: async (req, res) => {
-        
+        process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;      
+        const getProducts = await pool.query("SELECT * FROM products")
+
+        res.json(getProducts)
+
       
        
     },
